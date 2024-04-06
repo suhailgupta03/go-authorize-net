@@ -60,6 +60,11 @@ func (tr *Transaction) AttachCustomerDetails(customer *Customer) error {
 	return nil
 }
 
+func (tr *Transaction) AttachBillTo(billTo *BillTo) error {
+	tr.CreateTransactionRequest.TransactionRequest.BillTo = *billTo
+	return nil
+}
+
 func (tr *Transaction) AttachTransactionType(transactionType string) error {
 	tr.CreateTransactionRequest.TransactionRequest.TransactionType = transactionType
 	return nil

@@ -27,6 +27,7 @@ type TransactionRequest struct {
 	// The merchant-assigned purchase order number.
 	PoNumber string    `json:"poNumber,omitempty"`
 	Customer *Customer `json:"customer,omitempty"`
+	BillTo   BillTo    `json:"billTo,omitempty"`
 }
 
 type Customer struct {
@@ -35,8 +36,16 @@ type Customer struct {
 	ID string `json:"id,omitempty"`
 	// The customer’s valid email address. String, up to 255 characters.
 	Email string `json:"email,omitempty"`
-	// Card zip code
-	CardZipCode string `json:"cardZipCode,omitempty"`
+}
+
+type BillTo struct {
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+	Address   string `json:"address"`
+	City      string `json:"city"`
+	State     string `json:"state"`
+	Zip       string `json:"zip"`
+	Country   string `json:"country"`
 }
 
 type Request struct {
