@@ -27,7 +27,7 @@ type TransactionRequest struct {
 	// The merchant-assigned purchase order number.
 	PoNumber string    `json:"poNumber,omitempty"`
 	Customer *Customer `json:"customer,omitempty"`
-	BillTo   BillTo    `json:"billTo,omitempty"`
+	BillTo   *BillTo   `json:"billTo,omitempty"`
 }
 
 type Customer struct {
