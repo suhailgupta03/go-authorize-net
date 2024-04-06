@@ -61,7 +61,7 @@ func (tr *Transaction) AttachCustomerDetails(customer *Customer) error {
 }
 
 func (tr *Transaction) AttachBillTo(billTo *BillTo) error {
-	tr.CreateTransactionRequest.TransactionRequest.BillTo = *billTo
+	tr.CreateTransactionRequest.TransactionRequest.BillTo = billTo
 	return nil
 }
 
