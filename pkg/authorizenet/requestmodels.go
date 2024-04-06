@@ -35,6 +35,8 @@ type Customer struct {
 	ID string `json:"id,omitempty"`
 	// The customer’s valid email address. String, up to 255 characters.
 	Email string `json:"email,omitempty"`
+	// Card zip code
+	CardZipCode string `json:"cardZipCode,omitempty"`
 }
 
 type Request struct {
