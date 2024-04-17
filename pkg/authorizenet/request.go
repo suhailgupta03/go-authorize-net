@@ -18,7 +18,7 @@ type HTTPRequest struct {
 	Test bool
 }
 
-func (req *HTTPRequest) transact(transaction *Transaction) (*[]byte, error) {
+func (req *HTTPRequest) transact(transaction interface{}) (*[]byte, error) {
 	url := "https://apitest.authorize.net/xml/v1/request.api"
 	if !req.Test {
 		url = "https://api.authorize.net/xml/v1/request.api"
@@ -28,7 +28,7 @@ func (req *HTTPRequest) transact(transaction *Transaction) (*[]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	httpReq, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 	if err != nil {
 		return nil, err
@@ -95,6 +95,10 @@ func (req *HTTPRequest) CaptureAuthedAmount(transaction *Transaction, refTransId
 	transaction.AttachTransactionRequest(transactionRequest)
 
 	return req.transact(transaction)
+}
+
+func (req *HTTPRequest) CreateCustomerProfile(profile *CreateCustomerProfile) (*[]byte, error) {
+	return req.transact(profile)
 }
 
 func ToTransactionResponse(body *[]byte) (*Response, error) {

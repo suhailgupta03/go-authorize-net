@@ -55,6 +55,22 @@ type Request struct {
 	TransactionRequest TransactionRequest `json:"transactionRequest"`
 }
 
+// CustomerProfile used with CustomerProfileRequest
+type CustomerProfile struct {
+	MerchantCustomerId string `json:"merchantCustomerId"`
+	Description        string `json:"description"`
+	Email              string `json:"email"`
+}
+type CreateCustomerProfileRequest struct {
+	MerchantAuthentication MerchantAuthentication `json:"merchantAuthentication"`
+	Profile                CustomerProfile        `json:"profile"`
+	ValidationMode         string                 `json:"validationMode"`
+}
+
+type CreateCustomerProfile struct {
+	CreateCustomerProfileRequest CreateCustomerProfileRequest `json:"createCustomerProfileRequest"`
+}
+
 type Transaction struct {
 	CreateTransactionRequest Request `json:"createTransactionRequest"`
 }
